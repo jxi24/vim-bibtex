@@ -6,10 +6,10 @@ import neovim
 
 
 @neovim.plugin
-class Main:
+class Bibtex:
     def __init__(self, vim):
         self.vim = vim
 
-    @neovim.function('vim-bibtex')
+    @neovim.function('vim_bibtex')
     def vim_bibtex(self, args):
         self.vim.command('echo "Test"')
