@@ -6,7 +6,7 @@ import neovim
 
 
 @neovim.plugin
-class Bibtex:
+class Main:
     def __init__(self, vim):
         self.vim = vim
 
