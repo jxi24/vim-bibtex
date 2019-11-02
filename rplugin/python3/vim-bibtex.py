@@ -10,6 +10,6 @@ class Bibtex:
     def __init__(self, vim):
         self.vim = vim
 
-    @neovim.function('vim_bibtex')
-    def vim_bibtex(self, args):
-        self.vim.command('echo "Test"')
+    @neovim.function('TestCommand')
+    def vim_bibtex(self):
+        self.vim.current.line = 'New line'
