@@ -14,4 +14,4 @@ class Limit(object):
     @pynvim.function('Bibtex')
     def vim_bibtex(self, args):
         result = requests.get('http://inspirehep.net/search?p=f+a+joshua+isaacson&em=B&of=hx')
-        self.vim.current.line = result.text
+        self.vim.current.buffer.append(result.text)
