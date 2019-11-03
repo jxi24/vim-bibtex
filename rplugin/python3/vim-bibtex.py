@@ -11,5 +11,5 @@ class Bibtex:
         self.vim = vim
 
     @neovim.function('TestCommand')
-    def vim_bibtex(self):
+    def vim_bibtex(self, args):
         self.vim.current.line = 'New line'
