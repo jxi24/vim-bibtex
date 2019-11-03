@@ -18,4 +18,4 @@ class Bibtex(object):
         text = result.replace('</pre>', ' ').split('\n')
         text = [x for x in text if '<pre>' not in x and '</div>' not in x]
         self.vim.current.buffer.append(text)
-        self.vim.call('echo', self.vim.vars.get('g:vim_bibtex_name'))
+        self.vim.current.line = self.vim.vars.get('vim_bibtex_name')
