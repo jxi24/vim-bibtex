@@ -12,9 +12,9 @@ class Bibtex(object):
         self.vim = vim
         self.inspire = inspire.Inspire('html')
 
-    @pynvim.function('Bibtex')
-    def vim_bibtex(self, args):
-        result = self.inspire.search('f a joshua isaacson')
+    @pynvim.command('PublicationList', nargs='*', range='')
+    def publication_list(self, args, range):
+        result = self.inspire.search('f a {}'.format(args[0]))
         text = result.replace('</pre>', ' ').split('\n')
         text = [x for x in text if '<pre>' not in x]
         self.vim.current.buffer.append(text)
