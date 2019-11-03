@@ -1,0 +1,3 @@
+[submodule "inspire"]
+	path = inspire
+	url = git@github.com:jxi24/inspire.git
