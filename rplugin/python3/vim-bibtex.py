@@ -16,6 +16,6 @@ class Bibtex(object):
     def publication_list(self, args, range):
         result = self.inspire.search('f a {} {}'.format(args[0], args[1]))
         text = result.replace('</pre>', ' ').split('\n')
-        text = [x for x in text if '<pre>' not in x and '<div>' not in x]
+        text = [x for x in text if '<pre>' not in x and '</div>' not in x]
         self.vim.current.buffer.append(text)
-        self.vim.current.buffer.append(self.vim.vars.get('g:vim_bibtex_name'))
+        self.vim.call(echo self.vim.vars.get('g:vim_bibtex_name'))
