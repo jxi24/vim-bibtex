@@ -14,7 +14,7 @@ class Bibtex(object):
 
     @pynvim.command('PublicationList', nargs='*', range='')
     def publication_list(self, args, range):
-        self.vim.current.line(args)
+        self.vim.current.line = '{}'.format(args)
         result = self.inspire.search('f a {}'.format(args[0]))
         text = result.replace('</pre>', ' ').split('\n')
         text = [x for x in text if '<pre>' not in x]
