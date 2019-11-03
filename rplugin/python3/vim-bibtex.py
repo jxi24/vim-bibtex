@@ -7,10 +7,10 @@ import inspire
 
 
 @pynvim.plugin
-class Limit(object):
+class Bibtex(object):
     def __init__(self, vim):
         self.vim = vim
-        self.inspire = inspire.Inspire()
+        self.inspire = inspire.Inspire('html')
 
     @pynvim.function('Bibtex')
     def vim_bibtex(self, args):
