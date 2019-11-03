@@ -15,5 +15,6 @@ class Limit(object):
     def vim_bibtex(self, args):
         result = requests.get('http://inspirehep.net/search?p='
                               'f+a+joshua+isaacson&em=B&of=hx')
-        text = result.text.split('\n')
+        text = result.text.replace('</pre>', ' ').split('\n')
+        text = [x for x in text if '<pre>' not in x]
         self.vim.current.buffer.append(text)
