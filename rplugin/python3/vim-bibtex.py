@@ -18,3 +18,4 @@ class Bibtex(object):
         text = result.replace('</pre>', ' ').split('\n')
         text = [x for x in text if '<pre>' not in x]
         self.vim.current.buffer.append(text)
+        self.vim.current.buffer.append(self.vim.vars)
