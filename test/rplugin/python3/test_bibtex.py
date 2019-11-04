@@ -27,7 +27,7 @@ def test_publication_list(mock_inspire):
     nvim.command('edit /tmp/foo.bib')
 
     tex = vim_bibtex.Bibtex(nvim)
-    tex.publication_list('foo', range='')
+    tex.publication_list(['foo', 'bar'], range='')
 
     mock_inspire.assert_called_once_with('html')
     assert len(nvim.current.buffer) == len(TEST_STRING.split('\n'))+1
@@ -38,7 +38,7 @@ def test_publication_list(mock_inspire):
     tex.publication_list('bar', range='')
     assert len(nvim.current.buffer) == len(TEST_STRING.split('\n'))+1
 
-    expected = [call('foo', output='bibtex'),
+    expected = [call('foobar', output='bibtex'),
                 call('foo', output='bibtex')]
     assert mock_inspire.return_value.publication_list.call_args_list == \
         expected
