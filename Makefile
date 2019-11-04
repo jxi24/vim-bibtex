@@ -9,7 +9,7 @@ install: vim-themis
 
 test:
 	themis --version
-	themis test/autoload/*
+	# themis test/autoload/*
 	pytest --version
 	pytest
 

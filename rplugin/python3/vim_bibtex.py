@@ -19,5 +19,4 @@ class Bibtex(object):
         else:
             name = args[0] + args[1]
         text = self.inspire.publication_list(name, output='bibtex').split('\n')
-        print(text)
         self.vim.current.buffer.append(text)
