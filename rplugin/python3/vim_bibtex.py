@@ -18,8 +18,6 @@ class Bibtex(object):
             name = self.vim.vars.get('vim_bibtex_name')
         else:
             name = args[0] + args[1]
-        result = self.inspire.search('f a {}'.format(name))
-        text = result.replace('</pre>', ' ').split('\n')
-        text = [x for x in text if '<pre>' not in x and '</div>' not in x]
+        text = self.inspire.publication_list(name, output='bibtex').split('\n')
+        print(text)
         self.vim.current.buffer.append(text)
-        self.vim.current.line = self.vim.vars.get('vim_bibtex_name')
