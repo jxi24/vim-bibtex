@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import patch, call
 
 import vim_bibtex
 import inspire
@@ -25,8 +25,20 @@ def test_publication_list(mock_inspire):
 
     nvim = attach('child', argv=['nvim', '--embed', '--headless'])
     nvim.command('edit /tmp/foo.bib')
+
     tex = vim_bibtex.Bibtex(nvim)
-    tex.publication_list('joshua isaacson', range='')
+    tex.publication_list('foo', range='')
 
     mock_inspire.assert_called_once_with('html')
     assert len(nvim.current.buffer) == len(TEST_STRING.split('\n'))+1
+
+    nvim.command('undo')
+    nvim.vars['vim_bibtex_name'] = 'foo'
+
+    tex.publication_list('bar', range='')
+    assert len(nvim.current.buffer) == len(TEST_STRING.split('\n'))+1
+
+    expected = [call('foo', output='bibtex'),
+                call('foo', output='bibtex')]
+    assert mock_inspire.return_value.publication_list.call_args_list == \
+        expected
